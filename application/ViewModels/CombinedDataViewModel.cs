@@ -5,10 +5,15 @@ using System.Linq;
 
 namespace application.ViewModels
 {
+    /// <summary>
+    /// ViewModel для управления комбинированными данными.
+    /// </summary>
     public class CombinedDataViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<CombinedData> _combinedDatas;
-
+        /// <summary>
+        /// Коллекция комбинированных данных.
+        /// </summary>
         public ObservableCollection<CombinedData> CombinedDatas
         {
             get { return _combinedDatas; }
@@ -23,6 +28,7 @@ namespace application.ViewModels
         {
             using (var dbContext = new OracleDBContext())
             {
+                // Инициализация коллекции комбинированных данных при создании объекта ViewModel из 4х таблиц
                 var combinedDatas = dbContext.Employees
                     .Join(
                         dbContext.Departments,
@@ -52,9 +58,14 @@ namespace application.ViewModels
                 }
             }
         }
-
+        /// <summary>
+        /// Событие, уведомляющее об изменении свойства.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// Вызывается при изменении значения свойства.
+        /// </summary>
+        /// <param name="propertyName">Имя измененного свойства.</param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

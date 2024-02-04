@@ -209,6 +209,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="SQL_Scripts\cities_from_oracleSQLdeveloper.sql" />
+    <Content Include="SQL_Scripts\departments_from_oracleSQLdeveloper.sql" />
+    <Content Include="SQL_Scripts\emplyees_from_oracleSQLdeveloper.sql" />
+    <Content Include="SQL_Scripts\position_from_oracleSQLdeveloper.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -5,8 +5,16 @@ using System.IO;
 
 namespace application.Services
 {
+    /// <summary>
+    /// Сервис для экспорта данных в формате Excel.
+    /// </summary>
     public class ExcelExportService : IExportService
     {
+        /// <summary>
+        /// Экспортирует данные в файл формата Excel (.xlsx).
+        /// </summary>
+        /// <param name="data">Данные для экспорта.</param>
+        /// <param name="filePath">Путь к файлу, в который будет произведен экспорт.</param>
         public void ExportToExcel(ObservableCollection<CombinedData> data, string filePath)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

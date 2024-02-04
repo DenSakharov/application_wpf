@@ -11,13 +11,16 @@ namespace application.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        // Событие, оповещающее об изменении свойств
         public event PropertyChangedEventHandler PropertyChanged;
-
+        // Метод для вызова события изменения свойства
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        // Строка поиска
         private string _searchInput;
+        // Свойство для доступа к строке поиска
         public string SearchInput
         {
             get { return _searchInput; }
@@ -31,7 +34,9 @@ namespace application.ViewModels
                 }
             }
         }
+        // Коллекция для хранения всех данных
         private ObservableCollection<CombinedData> _combinedDatas;
+        // Свойство для доступа к данным
         public ObservableCollection<CombinedData> CombinedDatas
         {
             get { return _combinedDatas; }
@@ -45,7 +50,9 @@ namespace application.ViewModels
                 }
             }
         }
+        // Коллекция для хранения отфильтрованных данных
         private ObservableCollection<CombinedData> _filteredCombinedDatas;
+        // Свойство для доступа к отфильтрованным данным
         public ObservableCollection<CombinedData> FilteredCombinedDatas
         {
             get { return _filteredCombinedDatas; }
@@ -58,6 +65,7 @@ namespace application.ViewModels
                 }
             }
         }
+        // Команды для загрузки , выполнения поиска и редактирования данных
         public ICommand LoadDataCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand EditCommand { get; }
@@ -68,6 +76,7 @@ namespace application.ViewModels
             EditCommand = new RelayCommand(obj=>Edit());
             LoadData();
         }
+        // Метод для выполнения поиска
         private void Search()
         {
             IsLoading = true;
@@ -83,7 +92,9 @@ namespace application.ViewModels
 
             worker.RunWorkerAsync();
         }
+        // Признак загрузки данных
         private bool _isLoading;
+        // Свойство для доступа к признаку загрузки
         public bool IsLoading
         {
             get { return _isLoading; }
@@ -96,7 +107,9 @@ namespace application.ViewModels
                 }
             }
         }
+        // Количество записей после фильтрации
         private int _numberOfRecords;
+        // Свойство для доступа к количеству записей
         public int NumberOfRecords
         {
             get { return _numberOfRecords; }
@@ -109,6 +122,7 @@ namespace application.ViewModels
                 }
             }
         }
+        // Метод загрузки данных
         private void LoadData()
         {
             IsLoading = true;
@@ -126,7 +140,7 @@ namespace application.ViewModels
 
             worker.RunWorkerAsync();
         }
-
+        // Метод для фильтрации данных
         private ObservableCollection<CombinedData> FilterData()
         {
             if (string.IsNullOrWhiteSpace(SearchInput))
@@ -147,9 +161,9 @@ namespace application.ViewModels
             NumberOfRecords = FilteredCombinedDatas.Count;
             return FilteredCombinedDatas;
         }
-
+        // Выбранный элемент для редактирования
         private CombinedData _selectedCombinedData;
-
+        // Свойство для доступа к выбранному элементу
         public CombinedData SelectedCombinedData
         {
             get { return _selectedCombinedData; }
@@ -162,6 +176,9 @@ namespace application.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// Метод для открытия редактирования
+        /// </summary>
         private void Edit()
         {
             if (SelectedCombinedData != null)
@@ -171,6 +188,5 @@ namespace application.ViewModels
                 LoadData();
             }
         }
-
     }
 }
