@@ -123,6 +123,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\LoadingTextConverter.cs" />
     <Compile Include="Models\CombinedData.cs" />
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Services\ExcelExportService.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="ViewModels\CityDictionaryViewModel.cs" />
     <Compile Include="ViewModels\CombinedDataViewModel.cs" />
     <Compile Include="ViewModels\DepartmentViewModel.cs" />
+    <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="Views\CityDictionaryView.xaml.cs">
       <DependentUpon>CityDictionaryView.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,9 @@
     </Compile>
     <Compile Include="Views\DepartmentView.xaml.cs">
       <DependentUpon>DepartmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditUserControl.xaml.cs">
+      <DependentUpon>EditUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +164,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DepartmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
